@@ -135,10 +135,10 @@ class MainActivity : Activity() {
                     content.addView(text("Gagal mengambil data. Periksa URL Apps Script di Pengaturan."))
                     return@runOnUiThread
                 }
-                if (rows.isEmpty()) {
+                if (rows.length() == 0) {
                     content.addView(text("Belum ada pesanan."))
                 } else {
-                    for (r in rows.takeLast(100).reversed()) {
+                    for (i in rows.length() - 1 downTo maxOf(0, rows.length() - 100)) {     val r = rows.getJSONArray(i)
                         val box = LinearLayout(this)
                         box.orientation = LinearLayout.VERTICAL
                         box.setBackgroundColor(Color.WHITE)
